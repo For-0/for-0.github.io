@@ -1,9 +1,11 @@
+<head>
+<link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
+</head>
+
 # For Zero
 Don't mind this website - it is just a placeholder for something that may come in the future
 
 ## Feedback Form (This is just a test - don't fill it out)
-
-<link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
 <form action="https://send.pageclip.co/BAtB892oE5QMuCRY9JAqSa3AFgn94gRr" class="pageclip-form" method="post">
   <input type="text" name="subject" placeholder="Subject" />
   <input type="email" name="email" placeholder="Email" />
