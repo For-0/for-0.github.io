@@ -1,5 +1,15 @@
 {
-  "dependencies": {
-    "bulma": "^0.9.4"
+  "name": "for-0.github.io",
+  "version": "1.0.0",
+  "main": "sass/style.scss",
+  "license": "MIT",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/style.scss css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^8.0.0"
   }
 }
