@@ -131,7 +131,7 @@
         const usersList = document.getElementById("users-list");
         async function updateMembers() {
             usersList.parentElement.previousElementSibling.classList.add("is-loading");
-            let res = await fetch("https://pageclipformgetter.grimsteel.repl.co/responses-fanclub/", { method: "POST" });;
+            let res = await fetch("https://backend.vocabustudy.org/responses-fanclub/", { method: "POST" });;
             let reses = await res.json();
             usersList.textContent = "";
             usersList.append(...reses.responses.map(el => {
