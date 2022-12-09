@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <style>
         .tabs {
             margin-bottom: -1px !important;
@@ -61,7 +60,7 @@
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start is-link">
                 <a class="navbar-item" href="/">
-                    For Zero
+                    The Omkar Fan Club
                 </a>
             </div>
         </div>
@@ -174,13 +173,11 @@
         document.querySelector("form").addEventListener("submit", async e => {
             e.preventDefault();
             if (localStorage.getItem("has-joined")) return;
-            let formData = new FormData(e.target);
             document.querySelector("form button").classList.add("is-loading");
-            Pageclip.send("BAtB892oE5QMuCRY9JAqSa3AFgn94gRr", "omkarfanclub", {name: document.querySelector("input[type=text]").value}, (err, res) => {
-                localStorage.setItem("has-joined", true);
-                document.querySelector("form").hidden = true;
-                document.querySelector("form button").classList.remove("is-loading");
-            });  
+            await fetch("https://backend.vocabustudy.org/post-response/", {method: "POST", body: JSON.stringify({name: document.querySelector("input[type=text]").value}), headers: {"Content-Type": "application/json"}});
+            localStorage.setItem("has-joined", true);
+            document.querySelector("form").hidden = true;
+            document.querySelector("form button").classList.remove("is-loading");
         });
     </script>
 </body>
