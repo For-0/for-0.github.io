@@ -125,7 +125,7 @@
     <script>
         const usersList = document.getElementById("users-list");
         async function updateMembers() {
-            usersList.previousElementSibling.parentElement.classList.add("is-loading");
+            usersList.parentElement.previousElementSibling.classList.add("is-loading");
             let res = await fetch("https://pageclipformgetter.grimsteel.repl.co/responses-fanclub/", { method: "POST" });;
             let reses = await res.json();
             usersList.textContent = "";
@@ -134,10 +134,10 @@
                 li.innerText = el.name;
                 return li;
             }));
-            usersList.previousElementSibling.parentElement.classList.remove("is-loading");
+            usersList.parentElement.previousElementSibling.classList.remove("is-loading");
         }
         updateMembers();
-        usersList.previousElementSibling.parentElement.addEventListener("click", () => updateMembers());
+        usersList.parentElement.previousElementSibling.addEventListener("click", () => updateMembers());
         document.querySelectorAll("#nav li").forEach(function (navEl) {
             navEl.onclick = function () { toggleTab(this.id, this.dataset.target); }
         });
