@@ -5,10 +5,43 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex" />
     <title>Omkar Fan Club</title>
     <link rel="stylesheet" href="css/mystyles.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <style>
+        .tabs {
+            margin-bottom: -1px !important;
+            position: relative;
+        }
+
+        .tab-content {
+            padding: 60px;
+            top: 197px;
+            color: #000;
+            background-color: white;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.is-active {
+            display: block;
+            width: 50%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .is-active {
+            display: initial;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,13 +72,13 @@
         </div>
         <div class="tabs is-boxed is-centered main-menu" id="nav">
             <ul>
-                <li data-target="pane-1" id="1">
+                <li data-target="pane-1" id="1" class="is-active">
                     <a>
                         <span class="icon is-small"><i class="material-symbols-rounded">person_add</i></span>
                         <span>Join</span>
                     </a>
                 </li>
-                <li data-target="pane-2" id="2" class="is-active">
+                <li data-target="pane-2" id="2">
                     <a>
                         <span class="icon is-small"><i class="material-symbols-rounded">groups</i></span>
                         <span>Members</span>
@@ -60,14 +93,16 @@
             </ul>
         </div>
         <div class="tab-content">
-            <div class="tab-pane" id="pane-1">
-                <form action="https://send.pageclip.co/BAtB892oE5QMuCRY9JAqSa3AFgn94gRr/omkarfanclub" class="pageclip-form" method="post">
+            <div class="tab-pane is-active" id="pane-1">
+                <form action="https://send.pageclip.co/BAtB892oE5QMuCRY9JAqSa3AFgn94gRr/omkarfanclub"
+                    class="pageclip-form" method="post">
                     <input class="input" type="text" placeholder="Your Name" name="name" required>
                     <div class="field">
-                        <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" required />
+                        <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox"
+                            required />
                         <label for="exampleCheckbox">I am a Vocabustudy user</label>
-                      </div>
-                      <button class="button is-info">Join</button>
+                    </div>
+                    <button class="button is-info">Join</button>
                 </form>
             </div>
             <div class="tab-pane" id="pane-2">
@@ -89,7 +124,7 @@
             let res = await fetch("https://pageclipformgetter.grimsteel.repl.co/responses-fanclub/", { method: "POST" });;
             let reses = await res.json();
             usersList.textContent = "";
-            usersList.append(...reses.map(el => {
+            usersList.append(...reses.responses.map(el => {
                 let li = document.createElement("li");
                 li.innerText = el.name;
                 return li;
@@ -98,6 +133,33 @@
         }
         updateMembers();
         usersList.previousElementSibling.addEventListener("click", () => updateMembers());
+        document.querySelectorAll("#nav li").forEach(function (navEl) {
+            navEl.onclick = function () { toggleTab(this.id, this.dataset.target); }
+        });
+
+        function toggleTab(selectedNav, targetId) {
+            var navEls = document.querySelectorAll("#nav li");
+
+            navEls.forEach(function (navEl) {
+                if (navEl.id == selectedNav) {
+                    navEl.classList.add("is-active");
+                } else {
+                    if (navEl.classList.contains("is-active")) {
+                        navEl.classList.remove("is-active");
+                    }
+                }
+            });
+
+            var tabs = document.querySelectorAll(".tab-pane");
+
+            tabs.forEach(function (tab) {
+                if (tab.id == targetId) {
+                    tab.style.display = "block";
+                } else {
+                    tab.style.display = "none";
+                }
+            });
+        }
     </script>
 </body>
 
