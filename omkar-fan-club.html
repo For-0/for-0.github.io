@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Omkar Fan Club</title>
+    <link rel="stylesheet" href="css/mystyles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar is-info">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <img src="img/small-png.png" height="28">
+            </a>
+        </div>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start is-link">
+                <a class="navbar-item" href="/">
+                    Omkar Fan Club
+                </a>
+            </div>
+        </div>
+    </nav>
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    The Official Omkar Fan Club
+                </h1>
+                <h2 class="subtitle">
+                    Join Today
+                </h2>
+            </div>
+        </div>
+        <div class="tabs is-boxed is-centered main-menu" id="nav">
+            <ul>
+                <li data-target="pane-1" id="1">
+                    <a>
+                        <span class="icon is-small"><i class="material-symbols-rounded">person_add</i></span>
+                        <span>Join</span>
+                    </a>
+                </li>
+                <li data-target="pane-2" id="2" class="is-active">
+                    <a>
+                        <span class="icon is-small"><i class="material-symbols-rounded">groups</i></span>
+                        <span>Members</span>
+                    </a>
+                </li>
+                <li data-target="pane-3" id="3">
+                    <a>
+                        <span class="icon is-small"><i class="material-symbols-rounded">help</i></span>
+                        <span>Why?</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane" id="pane-1">
+                <form action="https://send.pageclip.co/BAtB892oE5QMuCRY9JAqSa3AFgn94gRr/omkarfanclub" class="pageclip-form" method="post">
+                    <input class="input" type="text" placeholder="Your Name" name="name" required>
+                    <div class="field">
+                        <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" required />
+                        <label for="exampleCheckbox">I am a Vocabustudy user</label>
+                      </div>
+                      <button class="button is-info">Join</button>
+                </form>
+            </div>
+            <div class="tab-pane" id="pane-2">
+                <button class="button is-primary is-outlined">Refresh</button>
+                <ul class="content" id="users-list"></ul>
+            </div>
+            <div class="tab-pane" id="pane-3">
+                <div class="content">
+                    <h1>Why should I join the Omkar Fan Club?</h1>
+                    <p>Have you been living under a rock</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const usersList = document.getElementById("users-list");
+        async function updateMembers() {
+            usersList.previousElementSibling.classList.add("is-loading");
+            let res = await fetch("https://pageclipformgetter.grimsteel.repl.co/responses-fanclub/", { method: "POST" });;
+            let reses = await res.json();
+            usersList.textContent = "";
+            usersList.append(...reses.map(el => {
+                let li = document.createElement("li");
+                li.innerText = el.name;
+                return li;
+            }));
+            usersList.previousElementSibling.classList.remove("is-loading");
+        }
+        updateMembers();
+        usersList.previousElementSibling.addEventListener("click", () => updateMembers());
+    </script>
+</body>
+
+</html>
