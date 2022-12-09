@@ -14,7 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
     <style>
         .tabs {
             margin-bottom: -1px !important;
@@ -42,6 +41,9 @@
 
         .is-active {
             display: initial;
+        }
+        form:not([hidden]) + p {
+            display: none;
         }
     </style>
 </head>
@@ -97,8 +99,7 @@
         <div class="tab-content">
             <div class="tab-pane is-active" id="pane-1">
                 <h1 class="mb-3 is-size-4">Join the Omkar Fan Club</h1>
-                <form action="https://send.pageclip.co/BAtB892oE5QMuCRY9JAqSa3AFgn94gRr/omkarfanclub"
-                    class="box pageclip-form" method="post">
+                <form class="box pageclip-form" method="post">
                     <input class="input" type="text" placeholder="Your Name" name="name" required>
                     <div class="field mt-2">
                         <input class="is-checkradio" id="exampleCheckbox" type="checkbox" required />
@@ -106,6 +107,7 @@
                     </div>
                     <button class="button is-info">Join</button>
                 </form>
+                <p class="box">Thank you for joining the Omkar Fan Club</p>
             </div>
             <div class="tab-pane" id="pane-2">
                 <h1 class="mb-3 is-size-4">Fan Club Members</h1>
@@ -141,6 +143,7 @@
         document.querySelectorAll("#nav li").forEach(function (navEl) {
             navEl.onclick = function () { toggleTab(this.id, this.dataset.target); }
         });
+        document.querySelector("form").hidden = localStorage.getItem("has-joined");
 
         function toggleTab(selectedNav, targetId) {
             var navEls = document.querySelectorAll("#nav li");
@@ -165,6 +168,17 @@
                 }
             });
         }
+        document.querySelector("form").addEventListener("submit", async e => {
+            e.preventDefault();
+            if (localStorage.getItem("has-joined")) return;
+            let formData = new FormData(e.target);
+            document.querySelector("form button").classList.add("is-loading");
+            Pageclip.send("BAtB892oE5QMuCRY9JAqSa3AFgn94gRr", "omkarfanclub", {name: document.querySelector("input[type=text]").value}, (err, res) => {
+                localStorage.setItem("has-joined", true);
+                document.querySelector("form").hidden = true;
+                document.querySelector("form button").classList.remove("is-loading");
+            });  
+        });
     </script>
 </body>
 
