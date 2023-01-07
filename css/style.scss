@@ -3,9 +3,12 @@
 $primary: #5271FF; // forzero blues
 $secondary: #7ED957; // forzero green
 $gray: #3D3B3B; // forzero gray
-
-body {
-  background: gray;
-}
+$main-font: "Raleway";
 
 @import "../node_modules/bulma/bulma.sass";
+
+html {
+  background: $gray;
+  color: white;
+
+}

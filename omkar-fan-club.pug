@@ -1,0 +1,127 @@
+include includes/head.pug
+    meta(name='robots', content='noindex')
+    title Omkar Fan Club
+    link(rel='stylesheet', href='css/style.scss')
+    style.
+        .tabs {
+            margin-bottom: -1px !important;
+            position: relative;
+        }
+        .tab-content {
+            padding: 60px;
+            top: 197px;
+            color: #000;
+            background-color: white;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.is-active {
+            display: block;
+            width: 50%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .is-active {
+            display: initial;
+        }
+        form:not([hidden]) + p {
+            display: none;
+        }
+        [hidden] {
+            display: none !important;
+        }
+include includes/navbar.pug
+section.hero.is-info
+    .hero-body
+        .container
+            h1.title
+                | The Official Omkar Fan Club
+            h2.subtitle
+                | Join Today!
+    #nav.tabs.is-boxed.is-centered.main-menu
+        ul
+            li#1.is-active(data-target='pane-1')
+                a
+                    span.icon.is-small
+                        i.material-symbols-rounded person_add
+                    span Join
+            li#2(data-target='pane-2')
+                a
+                    span.icon.is-small
+                        i.material-symbols-rounded groups
+                    span Members
+            li#3(data-target='pane-3')
+                a
+                    span.icon.is-small
+                        i.material-symbols-rounded help
+                    span Why?
+    .tab-content
+        #pane-1.tab-pane.is-active
+            h1.mb-3.is-size-4 Join the Omkar Fan Club
+            form.box.pageclip-form(method='post')
+                input.input(type='text', placeholder='Your Name', name='name', required='')
+                .field.mt-2
+                    input#exampleCheckbox.is-checkradio(type='checkbox', required='')
+                    label(for='exampleCheckbox') I want to join the fan club
+                button.button.is-info Join
+            p.box Thank you for joining the Omkar Fan Club.
+        #pane-2.tab-pane
+            h1.mb-3.is-size-4 Fan Club Members
+            button.button.is-link.is-outlined(style='margin-bottom: 1rem;') Refresh
+            .content.box
+                ul#users-list
+        #pane-3.tab-pane
+            .content
+                h1 Why should I join the Omkar Fan Club?
+                p Have you been living under a rock
+script.
+    const usersList = document.getElementById("users-list");
+    async function updateMembers() {
+        usersList.parentElement.previousElementSibling.classList.add("is-loading");
+        let res = await fetch("https://backend.vocabustudy.org/responses-fanclub/", { method: "POST" });;
+        let reses = await res.json();
+        usersList.textContent = "";
+        usersList.append(...reses.responses.map(el => {
+            let li = document.createElement("li");
+            li.innerText = el.name;
+            return li;
+        }));
+        usersList.parentElement.previousElementSibling.classList.remove("is-loading");
+    }
+    updateMembers();
+    usersList.parentElement.previousElementSibling.addEventListener("click", () => updateMembers());
+    document.querySelectorAll("#nav li").forEach(function (navEl) {
+        navEl.onclick = function () { toggleTab(this.id, this.dataset.target); }
+    });
+    document.querySelector("form").hidden = localStorage.getItem("has-joined");
+    function toggleTab(selectedNav, targetId) {
+        var navEls = document.querySelectorAll("#nav li");
+        navEls.forEach(function (navEl) {
+            if (navEl.id == selectedNav) {
+                navEl.classList.add("is-active");
+            } else {
+                if (navEl.classList.contains("is-active")) {
+                    navEl.classList.remove("is-active");
+                }
+            }
+        });
+        var tabs = document.querySelectorAll(".tab-pane");
+        tabs.forEach(function (tab) {
+            if (tab.id == targetId) {
+                tab.style.display = "block";
+            } else {
+                tab.style.display = "none";
+            }
+        });
+    }
+    document.querySelector("form").addEventListener("submit", async e => {
+        e.preventDefault();
+        if (localStorage.getItem("has-joined")) return;
+        document.querySelector("form button").classList.add("is-loading");
+        await fetch("https://backend.vocabustudy.org/post-response/", {method: "POST", body: JSON.stringify({name: document.querySelector("input[type=text]").value}), headers: {"Content-Type": "application/json"}});
+        localStorage.setItem("has-joined", true);
+        document.querySelector("form").hidden = true;
+        document.querySelector("form button").classList.remove("is-loading");
+    });
