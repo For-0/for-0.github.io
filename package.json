@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.8.2",
-    "@parcel/transformer-sass": "^2.8.2"
+    "@parcel/transformer-sass": "^2.8.2",
+    "parcel": "^2.8.2"
   },
   "dependencies": {
     "bulma": "^0.9.4"
