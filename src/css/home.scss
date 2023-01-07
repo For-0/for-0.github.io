@@ -1,0 +1,52 @@
+.title-hero {
+    background-image: linear-gradient(120deg, #005dff, #0096ff, #00bdff, #00dbd7, #00f27e, #a4ff00);
+    color: white;
+    animation: rainbow_animation 20s ease-in-out infinite;
+    background-size: 400% 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem;
+
+    button:hover {
+        text-decoration: none !important;
+    }
+}
+
+@keyframes rainbow_animation {
+
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+.second-page-text-left {
+    text-align: left;
+    margin: 5% 10%;
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.second-page-text-right {
+    text-align: right;
+    margin: 5% 10%;
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
