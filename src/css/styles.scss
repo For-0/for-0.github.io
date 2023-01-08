@@ -1,12 +1,165 @@
 @charset "utf-8";
 
-$primary: #5271FF; // forzero blues
-$secondary: #7ED957; // forzero green
-$gray: #3D3B3B; // forzero gray
-$family-sans-serif: "Raleway", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
-
-@import "bulma/bulma.sass";
+@use "vocabustudy/src/css/_bulma-modules" as * with (
+    $primary: #5271FF,
+    $secondary: #7ED957,
+    $custom-colors: ("forzero-grey": #3D3B3B)
+);
+@use "@bulvar/bulma/themes/light";
+@use "vocabustudy/src/css/_dark-theme";
 
 html, body {
     height: 100%;
+}
+
+.button.is-floating {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 1.6rem;
+    box-shadow: $box-shadow;
+    z-index: 3;
+    padding: 0;
+    &.is-large {
+        width: 90px;
+        height: 90px;
+        font-size: 2.6rem;
+    }
+    &.is-medium {
+        width: 75px;
+        height: 75px;
+        font-size: 2.2rem;
+    }
+    &.is-small {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+    }
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+.fab-theme-container {
+    bottom: 10px;
+    right: 10px;
+    width: fit-content;
+    z-index: 21;
+    position: fixed;
+    @media (max-width: 1023px) {
+        > button.is-floating,
+        > &.show div button.is-floating {
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            i {
+                font-size: 1.2rem !important;
+            }
+        }
+    }
+    > button span {
+        transition: transform 0.3s linear;
+    }
+    > div {
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: 10px;
+        button {
+            transform: scale(0);
+            display: none;
+        }
+    }
+    &.show {
+        > div {
+            display: flex;
+            flex-direction: column-reverse;
+            button {
+                display: block;
+                animation-name: enter;
+                animation-fill-mode: forwards;
+                animation-duration: 0.1s;
+                transform-origin: bottom center;
+                &:nth-of-type(1) {
+                    animation-delay: 0.1s;
+                }
+                &:nth-of-type(2) {
+                    animation-delay: 0.2s;
+                }
+                &:nth-of-type(3) {
+                    animation-delay: 0.3s;
+                }
+                &:nth-of-type(4) {
+                    animation-delay: 0.4s;
+                }
+            }
+        }
+        > button span {
+            transform: rotate(180deg);
+        }
+    }
+}
+@keyframes enter {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(0.8);
+    }
+}
+.title-hero {
+    background-image: linear-gradient(120deg, #005dff, #0096ff, #00bdff, #00dbd7, #00f27e, #a4ff00);
+    color: white;
+    animation: rainbow_animation 20s ease-in-out infinite;
+    background-size: 400% 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem;
+
+    button:hover {
+        text-decoration: none !important;
+    }
+}
+
+@keyframes rainbow_animation {
+
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+:root {
+    --primary-dark-l: 60%; // this is to make it less saturated
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+        "FILL" var(--font-variation-fill, 0),
+        "wght" var(--font-variation-weight, 400),
+        "GRAD" var(--font-variation-grade, 0),
+        "opsz" var(--font-variation-optical-size, 48);
+}
+.is-filled {
+    --font-variation-fill: 1;
+}
+:is(.button:not(.is-floating, .is-ghost, .is-inverted), .tabs) .material-symbols-rounded {
+    font-size: inherit;
+}
+.button {
+    transition: 0.1s all;
+}
+.is-coming-soon {
+    background-image: linear-gradient(120deg, $primary, $secondary);
+    color: white !important;
+    font-weight: 600 !important;
+    animation: rainbow_animation 1s ease-in-out infinite;
 }

@@ -15,6 +15,7 @@
     "parcel": "^2.8.2"
   },
   "dependencies": {
+    "@bulvar/bulma": "^0.11.13",
     "bulma": "^0.9.4"
   }
 }

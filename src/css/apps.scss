@@ -1,0 +1,33 @@
+.tile {
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    span.tag {
+        margin: 0.5rem;
+    }
+}
+
+.vocabustudy-app {
+    background-image: linear-gradient(120deg, #957163, #4f2b26);
+    color: white;
+    animation: rainbow_animation 1s ease-in-out infinite;
+}
+
+.bulmaHAC-app {
+    background-image: linear-gradient(120deg, #03D1B2, #6e1bc2);
+    color: white;
+    animation: rainbow_animation 1s ease-in-out infinite;
+}
+.simple-text-app {
+    background-image: linear-gradient(120deg, #48c78e, #009688);
+    color: white;
+    animation: rainbow_animation 1s ease-in-out infinite;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}

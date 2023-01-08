@@ -1,0 +1,42 @@
+extends includes/layout.pug
+block variables
+    - var title = "Applications";
+append main-stylesheet
+    link(rel="stylesheet" href="css/apps.scss")
+block content
+    .hero.is-medium.title-hero
+        .hero-body
+            .container
+                h1(style="font-size: 4rem;").has-font-weight-normal.has-text-white.title.is-1 Applications
+                //- button#down-to-second-page.button.is-ghost #[i.material-symbols-rounded(aria-hidden="true") keyboard_double_arrow_down] TODO: Add Button to go down
+                //- TODO: Add Hover for Tiles
+    .tile.is-ancestor.column
+        .tile.is-parent
+            .tile.is-child.box.vocabustudy-app
+                a(href="https://vocabustudy.org/") #[img.is-centered(src="../vocabustudy/src/icons/icon-192.png" alt="Vocabustudy" style="text-align:center; display:block; margin:auto; border: 0.001px solid; border-color: #fff; border-radius: 3rem; height: 200px;")]
+                h1 Vocabustudy
+                .tags.is-centered
+                    span.tag.is-primary.is-light Web App
+                    span.tag.is-info.is-light Vocabulary Learning
+                    span.tag.is-secondary.is-light 100+ Users
+        .tile.is-parent
+            .tile.is-child.box.simple-text-app
+                a(href="https://editor.forzero.vocabustudy.org/") #[img.is-centered(src="./images/simple-text-editor.png" alt="Simple Text Editor" style="text-align:center; display:block; margin:auto; border: 0.001px solid; border-radius: 99rem; height: 200px; border-color: #fff;")]
+                h1 Simple Text Editor
+                .tags.is-centered
+                    span.tag.is-primary.is-light Web App
+                    span.tag.is-info.is-light Minimalistic
+                    span.tag.is-secondary.is-light Code Supported
+        .tile.is-parent
+            .tile.is-child.box.bulmaHAC-app
+                a(href="/") #[img.is-centered(src="./images/BHAC.svg" alt="Bulma HAC" style="text-align:center; display:block; margin:auto; border: 0.001px solid; border-radius: 3rem; height: 200px; border-color: #fff;")]
+                h1 Bulma HAC
+                .tags.is-centered
+                    span.tag.is-primary.is-light Browser Extension
+                    span.tag.is-info.is-light UI Enhancer
+                    span.tag.is-coming-soon Coming Soon!
+        .tile.is-parent
+            .tile.is-child.box.is-coming-soon
+                h1.title.is-1.has-text-white Coming Soon!          
+append scripts-footer
+    script(src="js/apps.js")

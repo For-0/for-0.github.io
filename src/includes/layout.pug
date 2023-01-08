@@ -8,15 +8,15 @@ html.has-navbar-fixed-top(lang="en" style="overflow-x: hidden; overflow-y: auto;
         link(rel='icon' type='image/x-icon' href='images/favicon.ico')
         block main-stylesheet
             link(rel="stylesheet" href="css/styles.scss")
-        link(href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded' rel='stylesheet')
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200")
         link(rel='preconnect' href='https://fonts.googleapis.com')
         link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
         link(href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel='stylesheet')
-        title #{title || "Home"} - Vocabustudy
+        title #{title || "Home"} - For Zero
         block extrahead
     body.is-flex.is-flex-direction-column
         block navbar
-            nav.navbar.is-dark.is-fixed-top(role='navigation' aria-label='main navigation')
+            nav.navbar.is-forzero-grey.is-fixed-top.has-shadow(role='navigation' aria-label='main navigation')
                 .navbar-brand.is-justify-content-space-between
                     a.navbar-item(href='/#')
                         img.is-relative(src='images/forzeronavbar.svg' height="28")
@@ -25,11 +25,26 @@ html.has-navbar-fixed-top(lang="en" style="overflow-x: hidden; overflow-y: auto;
                         span(aria-hidden='true')
                         span(aria-hidden='true')
                 #main-navbar.navbar-menu
-                    .navbar-start
-                        //a(href="omkar-fan-club.pug").navbar-item Omkar Fan Club
+                    .navbar-end
+                        .navbar-item
+                            a.button.is-primary(href="apps.pug") 
+                                span.icon
+                                    i.material-symbols-rounded.is-filled(aria-hidden="true") interests
+                                span Applications
         main.is-flex-grow-1
             block content
-        footer.py-3.footer &copy; 2022-2023 For Zero Applications. All Rights Reserved
+        .fab-theme-container
+            button.button.is-forzero-grey.fab-theme.is-floating(aria-label="Theme" title="Change Theme")
+                i.material-symbols-rounded.has-text-white.is-filled(style="font-size: 1.5rem; ") light_mode
+            div
+                button.button.is-primary.fab-theme.is-floating(aria-label="Theme" title="System")
+                    i.material-symbols-rounded.is-filled(aria-hidden="true") brightness_4
+                button.button.is-primary.fab-theme.is-floating(aria-label="Theme" title="Dark")
+                    i.material-symbols-rounded.is-filled(aria-hidden="true") dark_mode
+                button.button.is-primary.fab-theme.is-floating(aria-label="Light" title="Light")
+                    i.material-symbols-rounded.is-filled(aria-hidden="true") light_mode
+        footer.py-3.footer.is-fixed-bottom.is-relative 
+            p(style="text-align: center;") &copy; 2022-2023 For Zero Applications. All Rights Reserved.
         block scripts-footer
             script.
                 const navbar = {
@@ -46,3 +61,41 @@ html.has-navbar-fixed-top(lang="en" style="overflow-x: hidden; overflow-y: auto;
                         navbar.menu.classList.remove("is-active");
                     });
                 });
+                const fabs = {
+                    theme: document.querySelector(".fab-theme"),
+                    themeContainer: document.querySelector(".fab-theme-container"),
+                    themeOptions: document.querySelectorAll(".fab-theme-container > div button")
+                };
+                showTheme(localStorage.getItem("theme"));
+                const themes = ["system", "dark", "light"];
+                function showTheme(theme) {
+                    document.documentElement.classList.remove("theme-dark", "theme-system");
+                    switch (theme) {
+                        case "dark":
+                            fabs.theme.querySelector("i").innerText = "dark_mode";
+                            document.documentElement.classList.add("theme-dark");
+                            break;
+                        case "system":
+                            fabs.theme.querySelector("i").innerText = "brightness_4";
+                            document.documentElement.classList.add("theme-system");
+                            break;
+                        case "light":
+                            fabs.theme.querySelector("i").innerText = "light_mode";
+                            break;
+                    }
+                }
+                fabs.themeOptions.forEach((el, i) => {
+                    el.addEventListener("click", () => {
+                        showTheme(themes[i]);
+                        localStorage.setItem("theme", themes[i]);
+                    });
+                });
+                let userPrefersDark = matchMedia("(prefers-color-scheme: dark)");
+                document.documentElement.classList.toggle("prefers-dark", userPrefersDark.matches);
+                userPrefersDark.addEventListener("change", e => document.documentElement.classList.toggle("prefers-dark", e.matches));
+
+                fabs.theme.addEventListener("click", e => {
+                    e.stopPropagation();
+                    fabs.themeContainer.classList.toggle("show")
+                }, true);
+                document.addEventListener("click", () => fabs.themeContainer.classList.remove("show"));
