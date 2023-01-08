@@ -27,7 +27,12 @@ html.has-navbar-fixed-top(lang="en" style="overflow-x: hidden; overflow-y: auto;
                 #main-navbar.navbar-menu
                     .navbar-end
                         .navbar-item
-                            a.button.is-primary(href="apps.pug") 
+                            a.button.is-secondary(href="team.pug")
+                                span.icon
+                                    i.material-symbols-rounded.is-filled.has-text-white(aria-hidden="true") group
+                                span.has-text-white Meet the Team
+                        .navbar-item
+                            a.button.is-primary(href="apps.pug")
                                 span.icon
                                     i.material-symbols-rounded.is-filled(aria-hidden="true") interests
                                 span Applications
@@ -43,7 +48,7 @@ html.has-navbar-fixed-top(lang="en" style="overflow-x: hidden; overflow-y: auto;
                     i.material-symbols-rounded.is-filled(aria-hidden="true") dark_mode
                 button.button.is-primary.fab-theme.is-floating(aria-label="Light" title="Light")
                     i.material-symbols-rounded.is-filled(aria-hidden="true") light_mode
-        footer.py-3.footer.is-fixed-bottom.is-relative 
+        footer(style="margin-top: 2rem;").py-3.footer.is-fixed-bottom.is-relative
             p(style="text-align: center;") &copy; 2022-2023 For Zero Applications. All Rights Reserved.
         block scripts-footer
             script.

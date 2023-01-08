@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "source": [
-    "src/index.pug"
+    "src/index.pug",
+    "src/apps.pug",
+    "src/team.pug"
   ],
   "scripts": {
     "start": "parcel",

@@ -1,0 +1,104 @@
+extends includes/layout.pug
+block variables
+    - var title = "The Team";
+append main-stylesheet
+    link(rel="stylesheet" href="css/team.scss")
+block content
+    .hero.is-medium.title-hero
+        .hero-body
+            .container
+                h1.has-font-weight-normal.has-text-white.title.is-1 The For Zero Team
+                //- button#down-to-second-page.button.is-ghost #[i.material-symbols-rounded(aria-hidden="true") keyboard_double_arrow_down] TODO: Add Button to go down
+    .column.is-offset-2.is-8
+        article.media.box
+            .media-content
+                .content
+                    h1 Siddhant Kameswar
+                    span.tag.is-primary.is-small Co-Founder
+                    span.tag.is-primary.is-small Head Developer
+                    span.tag.is-primary.is-small Head Design
+                    span.tag.is-primary.is-small Creator
+                    br
+                    br
+                    p For Zero Applications is headed by Siddhant Kameswar, who is the creator of Vocabustudy. The amount of work and contribution given by Siddhant outstrips all other contributors.
+                    nav.level.is-mobile
+                    .level-left
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="images/vocabustudy-black.svg" style="scale: 1.1;" onclick="location.href='https://vocabustudy.org/user/AZ1AbMqRkoWavZsVg3Gi6DbnF7x2/'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/github.svg" onclick="location.href='https://github.com/grimsteel'").brandicon
+        article.media.box
+            .media-content
+                .content
+                    h1 Ruhan Gupta
+                    span.tag.is-primary.is-small Co-Founder
+                    span.tag.is-primary.is-small Developer
+                    span.tag.is-primary.is-small Design
+                    span.tag.is-primary.is-small Lead Marketer (Public Relations)
+                    br
+                    br
+                    p Ruhan Gupta (not Nikhil's brother) helped co-found For Zero and has contributed to some of the visual design of the applications, like Vocabustudy. Like the other contributors, he has helped with functionality, testing, and bug fixes, created the For Zero and Vocabustudy logo, and helped improve the design of the Vocabustudy Discord Server. He manages with the For Zero's organization operations and interaction with the outside world.
+                    nav.level.is-mobile
+                    .level-left
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="images/vocabustudy-black.svg" style="scale: 1.1;" onclick="location.href='https://vocabustudy.org/user/nWasbt2yvXewc8AhGSqwmfT4gVu2/'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/github.svg" onclick="location.href='https://github.com/IMGROOT2'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/discord.svg" onclick="location.href='https://discordapp.com/users/698961308506390568'").brandicon
+
+        article.media.box
+            .media-content
+                .content
+                    h1 Omkar Patil
+                    span.tag.is-primary.is-small Marketer
+                    span.tag.is-primary.is-small Tester
+                    span.tag.is-primary.is-small Developer
+                    br
+                    br
+                    p Omkar Patil has been with Siddhant since the beginning. Throughout the development of Vocabustudy, he has helped with testing, bug fixes, and new features and has requested features to make Vocabustudy better. He also helped set up the Discord server. Above all, he and Nikhil have shared Vocabustudy with the world, and has helped grow it along the way.
+                    nav.level.is-mobile
+                    .level-left
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="images/vocabustudy-black.svg" style="scale: 1.1;" onclick="location.href='https://vocabustudy.org/user/mnDmw8WhAGSup4W2kH0EsRCgb072/'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/github.svg" onclick="location.href='https://github.com/PrakmO'").brandicon
+        article.media.box
+            .media-content
+                .content
+                    h1 Nikhil Gupta
+                    span.tag.is-primary.is-small Marketer
+                    span.tag.is-primary.is-small Developer
+                    br
+                    br
+                    p Nikhil Gupta (not Ruhan's brother) has also been with Siddhant since the beginning. Throughout the development of Vocabustudy, he has requested features to make Vocabustudy better. He created the Discord server, invited people, and it. He and Omkar have shared Vocabustudy with the world, which has helped grow it along the way.
+                    nav.level.is-mobile
+                    .level-left
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="images/vocabustudy-black.svg" style="scale: 1.1;" onclick="location.href='https://vocabustudy.org/user/indXd3yqrqVZw07LCWHnTm69ZAg1/'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/github.svg" onclick="location.href='https://github.com/Nikhilatvocabustudy'").brandicon
+                        a.level-item
+                            span.icon.is-medium
+                                img(src="../vocabustudy/src/icons/brands/discord.svg" onclick="location.href='https://discordapp.com/users/999731275667619971'").brandicon
+        article.media.box
+            .media-content
+                .content
+                    h1 Michael Zhao
+                    span.tag.is-primary.is-small Tester
+                    br
+                    br
+                    p Michael Zhao, once told about Vocabustudy, started stress testing it. The amount of bugs he found and helped fix cannot be counted.* He has helped countless times with making Vocabustudy more responsive and easier to use on smaller screens.
+                    p(style="font-size: 8px;") *Maybe they can be??????????
+
+append scripts-footer
+    script(src="js/apps.js")

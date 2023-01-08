@@ -1,0 +1,12 @@
+.tag {
+  margin: 0.2rem;
+}
+.theme-dark {
+  .brandicon {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+}
+.brandicon:hover {
+  filter: invert(96%) sepia(1%) saturate(6271%) hue-rotate(182deg) brightness(70%) contrast(100%);
+}
