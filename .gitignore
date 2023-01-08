@@ -132,3 +132,4 @@ dist
 # extra
 .idea/
 .vscode/
+.parcel-cache/
