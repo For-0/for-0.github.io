@@ -23,5 +23,35 @@ block content
     .second-page-text-right
         h1.title Built Around You. 🙌
         h2.subtitle We're here to help students and making learning better.
+
+    div.hero.is-primary.is-small(style="text-align: center; padding: 2rem; margin-bottom: 2rem;")
+        h1.title.is-2 Timeline
+        h2.subtitle.is-4 This timeline will be updated with more information as we're ready to release it. Keep checking this section for updates!
+    .timeline.is-centered
+        header.timeline-header
+            span.tag.is-medium.is-primary Now
+        .timeline-item.is-primary
+            .timeline-marker.is-primary
+            .timeline-content
+                p.heading Early 2023
+                p #[a(href="https://github.com/For-0/bulma-HAC") #[button.button.is-primary.is-small.is-timeline-button Bulma HAC]] We're working on a browser extension called Bulma HAC that enhances the UI of PowerSchool's Home Access Center.
+        .timeline-item.is-primary
+            .timeline-marker.is-primary
+            .timeline-content
+                p.heading February 2023
+                p #[a(href="https://github.com/For-0/simple-text-editor") #[button.button.is-primary.is-small.is-timeline-button Simple Text Editor]] We're adding more features to the Simple Text Editor, such as adding files, customization and more.
+        .timeline-item.is-primary
+            .timeline-marker.is-primary
+            .timeline-content
+                p.heading March 2023
+                p #[a(href="https://github.com/For-0/vocabustudy") #[button.button.is-primary.is-small.is-timeline-button Vocabustudy Live]] Collaborate to study and solve problems to prepare for upcoming quizzes and tests!
+        .timeline-item.is-primary
+            .timeline-marker.is-primary
+            .timeline-content
+                p.heading April/May 2023
+                p #[a(href="/") #[button.button.is-primary.is-small.is-timeline-button STAARSAP]] Our STAAR question practice web app will be ready for use in time for the STAAR Tests! Functionality will increase as time goes on.
+        header.timeline-header
+            span.tag.is-medium.is-primary More coming soon!
+
 append scripts-footer
     script(src="js/home.js")

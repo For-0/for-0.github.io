@@ -7,6 +7,7 @@
 );
 @use "@bulvar/bulma/themes/light";
 @use "./vocabustudy/src/css/_dark-theme";
+@use "bulma-timeline";
 
 html, body {
     height: 100%;
@@ -162,4 +163,8 @@ html, body {
     color: white !important;
     font-weight: 600 !important;
     animation: rainbow_animation 1s ease-in-out infinite;
+}
+.is-timeline-button {
+    position: relative;
+    bottom: 3px;
 }
